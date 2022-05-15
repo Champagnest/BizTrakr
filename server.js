@@ -14,20 +14,29 @@ inquirer
                 value: "view_employees"
               },
               {
-                name: "view all roles",
-                value: "view_all_roles"
-              }, 
-              {
                 name: "view all departments",
                 value: "view_all_departments"
+              }, 
+              {
+                name: "view all Roles",
+                value: "view_all_Roles"
+              }, 
+              {
+                name: "add a Role",
+                value: "add_a_Role"
               }, 
               {
                 name: "add a department",
                 value: "add_a_department"
               }, 
-              
-              
-            
+              {
+                name: "add an employee",
+                value: "add_an_employee"
+              }, 
+              {
+                name: "update an employee role",
+                value: "update_an_employee_role"
+              },
             ,
 
         ]
@@ -42,14 +51,14 @@ inquirer
         case 'view_all_roles':
             ViewRoles();
             break;
-        case 'view_all_departments':
-            ViewDepartments();
+        case 'view_all_Roles':
+            ViewRoles();
             break;
           // expected output: "Mangoes and papayas are $2.79 a pound."
           break;
-          case 'add_a_department':
+          case 'add_a_Role':
               console.log('testing');
-          AddDepartment();
+          AddRole();
           break;
         default:
       }
@@ -124,4 +133,72 @@ function AddDepartment() {
   });
 };
 
+function AddRole() {
+    
+  inquirer
+.prompt([
+  {message: "What is the Role name?",
+  name: "role",
+  type: "input",
+}
+  /* Pass your questions in here */
+])
+.then((answer) => {
+    console.log(answer);
+  db.promise().query(`INSERT INTO role (role_name) VALUES ('${answer.Role}');`)
+  // Use user feedback for... whatever!!
+})
+.then(() => {
+  return ViewRoles()
+})
+.catch((error) => {
+ console.log(error)
+});
+};
+        
+function AddEmployees() {
+    
+  inquirer
+.prompt([
+  {message: "What is the employee's name?",
+  name: "employee",
+  type: "input",
+}
+  /* Pass your questions in here */
+])
+.then((answer) => {
+    console.log(answer);
+  db.promise().query(`INSERT INTO employee (employee_name) VALUES ('${answer.employees}');`)
+  // Use user feedback for... whatever!!
+})
+.then(() => {
+  return ViewRoles()
+})
+.catch((error) => {
+ console.log(error)
+});
+};
+        
+function updateEmployeeRole() {
+    
+  inquirer
+.prompt([
+  {message: "What is the employee's name?",
+  name: "employeeRole",
+  type: "input",
+}
+  /* Pass your questions in here */
+])
+.then((answer) => {
+    console.log(answer);
+  db.promise().query(`INSERT INTO employeeRole (employee_role) VALUES ('${answer.employeeRole}');`)
+  // Use user feedback for... whatever!!
+})
+.then(() => {
+  return ViewEmployeeRoles()
+})
+.catch((error) => {
+ console.log(error)
+});
+};
         
