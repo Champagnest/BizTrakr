@@ -51,8 +51,8 @@ inquirer
         case 'view_all_roles':
             ViewRoles();
             break;
-        case 'view_all_roles':
-            ViewRoles();
+        case 'view_all_departments':
+            ViewDepartments();
             break;
           // expected output: "Mangoes and papayas are $2.79 a pound."
           break;
