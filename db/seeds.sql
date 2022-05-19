@@ -34,4 +34,4 @@ VALUES
   INSERT INTO department
   (department_name)
   VALUES
-  ()
+  ('manager', 'web dev','interns')
